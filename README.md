@@ -43,12 +43,12 @@ Follow these steps to get your environment set up:
 
 ## 🖼️ **App Screenshot**
 
-![User List](assets\userlist.png)
+![User List](assets/userlist.png)
 
 
-![Add User](assets\add.png)
+![Add User](assets/add.png)
 
-![Edit User](assets\edit.png)
+![Edit User](assets/edit.png)
 
 ---
 
