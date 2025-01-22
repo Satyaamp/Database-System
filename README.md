@@ -43,9 +43,12 @@ Follow these steps to get your environment set up:
 
 ## 🖼️ **App Screenshot**
 
-![App Screenshot](./assets/screenshot.png)
+![User List](assets\userlist.png)
 
-*Ensure that you add your app screenshot image into the `assets` folder.*
+
+![Add User](assets\add.png)
+
+![Edit User](assets\edit.png)
 
 ---
 
