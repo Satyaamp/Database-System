@@ -35,7 +35,7 @@ def index():
     con.close()
     return render_template("index.html", datas=data)
 
-@app.route("/add_user", methods=['POST', 'GET'])
+@app.route("/ad_user", methods=['POST', 'GET'])
 def add_user():
     if request.method == 'POST':
         uname = request.form['uname']
@@ -43,9 +43,10 @@ def add_user():
         uadd = request.form['uadd']
         upin = request.form['upin']
 
-        if not uname or not uenno.isdigit() or len(upin) != 6:
+        # Validate the inputs
+        if not uname or not uenno.isdigit() or len(upin) != 6 or not upin.isdigit():
             flash("Invalid input data!", "danger")
-            return redirect(url_for("add_user"))
+            return redirect(url_for("add_user"))  # Redirect to avoid resubmission
 
         try:
             con = get_db_connection()
@@ -58,7 +59,8 @@ def add_user():
             flash(f"Database Error: {str(e)}", "danger")
         finally:
             con.close()
-        return redirect(url_for("index"))
+
+        return redirect(url_for("index"))  # Redirect after adding user to prevent resubmission
     return render_template("ad_user.html")
 
 @app.route("/edit_user/<string:uid>", methods=['POST', 'GET'])
@@ -80,13 +82,16 @@ def edit_user(uid):
             flash(f"Database Error: {str(e)}", "danger")
         finally:
             con.close()
-        return redirect(url_for("index"))
 
+        return redirect(url_for("index"))  # Redirect after updating user
+
+    # Fetch user data for editing
     con = get_db_connection()
     cur = con.cursor()
     cur.execute("SELECT * FROM users WHERE UID = ?", (uid,))
     data = cur.fetchone()
     con.close()
+
     return render_template("edit_user.html", datas=data)
 
 @app.route("/delete_user/<string:uid>", methods=['GET'])
@@ -101,8 +106,9 @@ def delete_user(uid):
         flash(f"Database Error: {str(e)}", "danger")
     finally:
         con.close()
-    return redirect(url_for("index"))
+
+    return redirect(url_for("index"))  # Redirect to index after deletion
 
 if __name__ == '__main__':
-    init_db()
+    init_db()  # Initialize database when the app starts
     app.run(debug=True)

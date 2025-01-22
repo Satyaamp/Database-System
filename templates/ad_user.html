@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Add User</h1>
-    <form method="POST">
-        <label for="uname">Name</label>
-        <input type="text" id="uname" name="uname" required><br><br>
-        <label for="uenno">ENo</label>
-        <input type="text" id="uenno" name="uenno" required><br><br>
-        <label for="uadd">Address</label>
-        <input type="text" id="uadd" name="uadd" required><br><br>
-        <label for="upin">PIN</label>
-        <input type="text" id="upin" name="upin" required><br><br>
-        <button type="submit">Submit</button>
-    </form>
-    <a href="{{ url_for('index') }}">Back to Users List</a>
+    <div class="container">
+        <h1>Add New User</h1>
+        <form method="POST" class="form">
+            <label for="uname">Name</label>
+            <input type="text" id="uname" name="uname" required placeholder="Enter full name">
+            
+            <label for="uenno">ENo</label>
+            <input type="text" id="uenno" name="uenno" required placeholder="Enter enrollment number">
+            
+            <label for="uadd">Address</label>
+            <input type="text" id="uadd" name="uadd" required placeholder="Enter address">
+            
+            <label for="upin">PIN</label>
+            <input type="text" id="upin" name="upin" required placeholder="Enter 6-digit PIN">
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="btn btn-info">Back to Users List</a>
+    </div>
 </body>
 </html>
