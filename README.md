@@ -67,7 +67,6 @@ The layout adapts to mobile devices, ensuring a great user experience across all
 
 ## ⚙️ **Future Enhancements**
 - **🔒 Authentication**: Add authentication features to secure the app.
-- **📊 Analytics**: Include analytics to display user-related data.
 
 ---
 
