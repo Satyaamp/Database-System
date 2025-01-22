@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3>Edit User</h3>
+      <hr>
+      <!-- Flash messages for error/success feedback -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      <form method="post" action="{{ url_for('edit_user', uid=datas.UID) }}">
+        <div class="form-group">
+          <label for="uname">User Name</label>
+          <input type="text" name="uname" id="uname" required class="form-control" value="{{ datas.UNAME }}" placeholder="Enter user name">
+        </div>
+        <div class="form-group">
+          <label for="uenno">ER No.</label>
+          <input type="number" name="uenno" id="uenno" required class="form-control" value="{{ datas.UENNO }}" placeholder="Enter ER No.">
+        </div>
+        <div class="form-group">
+          <label for="uadd">Address</label>
+          <input type="text" name="uadd" id="uadd" required class="form-control" value="{{ datas.UADD }}" placeholder="Enter address">
+        </div>
+        <div class="form-group">
+          <label for="upin">Pincode</label>
+          <input type="number" name="upin" id="upin" required class="form-control" value="{{ datas.UPIN }}" placeholder="Enter 6-digit pincode" min="100000" max="999999">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+{% endblock %}
